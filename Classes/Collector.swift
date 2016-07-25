@@ -8,7 +8,7 @@
 
 import Dispatch
 
-class Collector<Element> {
+public class Collector<Element> {
     private var elements: [Element]!
     #if swift(>=3.0)
     private let serialQueue = DispatchQueue(label: "", attributes: .serial)
@@ -16,7 +16,9 @@ class Collector<Element> {
     private let serialQueue = dispatch_queue_create("", DISPATCH_QUEUE_SERIAL)
     #endif
     
-    func add(element: Element?) -> AnySequence<Element>? {
+    public init() {}
+    
+    public func add(element: Element?) -> AnySequence<Element>? {
         var returnSequence = false
         
         let syncClosure = {
